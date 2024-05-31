@@ -21,13 +21,28 @@
 
 import PackageDescription
 
+// let package = Package(
+//     name: "Starscream",
+//     dependencies: [
+//         .Package(url: "https://github.com/daltoniam/zlib-spm.git",
+//     majorVersion: 1, minor: 1),
+//         .Package(url: "https://github.com/daltoniam/common-crypto-spm",
+//                  majorVersion: 1, minor: 1),
+//         ],
+//     exclude: ["Tests", "examples"]
+// )
+
 let package = Package(
-    name: "Starscream",
-    dependencies: [
-        .Package(url: "https://github.com/daltoniam/zlib-spm.git",
-    majorVersion: 1, minor: 1),
-        .Package(url: "https://github.com/daltoniam/common-crypto-spm",
-                 majorVersion: 1, minor: 1),
+        name: "Starscream",
+        products: [
+            .library(name: "Starscream", targets: ["Starscream"])
         ],
-    exclude: ["Tests", "examples"]
+        dependencies: [
+            .package(url: "https://github.com/apple/swift-nio-zlib-support.git", from: "1.0.0")
+        ],
+        targets: [
+            .target(name: "Starscream",
+                    path: "Sources",
+                    resources: [.copy("PrivacyInfo.xcprivacy")])
+        ]
 )
