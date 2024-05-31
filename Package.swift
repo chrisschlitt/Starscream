@@ -38,7 +38,9 @@ let package = Package(
             .library(name: "Starscream", targets: ["Starscream"])
         ],
         dependencies: [
-            .package(url: "https://github.com/apple/swift-nio-zlib-support.git", from: "1.0.0")
+//             .package(url: "https://github.com/apple/swift-nio-zlib-support.git", from: "1.0.0")
+            .package(url: "github.com/daltoniam/zlib-spm.git", branch: "master"),
+            .package(url: "https://github.com/daltoniam/common-crypto-spm", branch: "master"),
         ],
         targets: [
             .target(name: "Starscream",
